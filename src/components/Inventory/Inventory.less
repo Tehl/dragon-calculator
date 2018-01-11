@@ -1,3 +1,5 @@
+@import "../../utility/utility.less";
+
 .current-inventory {
   input {
     display: inline-block;
@@ -7,5 +9,12 @@
 
   .inventory-item {
     padding: 8px 0;
+  }
+
+  .header {
+    &:before {
+      .icon("\f0b1");
+      font-weight: normal;
+    }
   }
 }

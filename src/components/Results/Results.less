@@ -1,5 +1,22 @@
+@import "../../utility/utility.less";
+
 .merge-results {
   span {
     white-space: nowrap;
+  }
+
+  .used-inventory {
+    &:after {
+      .icon("\f0b1", 0);
+      position: absolute;
+      margin-left: 0.7em;
+    }
+  }
+
+  .header {
+    &:before {
+      .icon("\f0c1");
+      font-weight: normal;
+    }
   }
 }

@@ -24,13 +24,19 @@ function mergeReduce(value, fromRadix, toRadix, owned) {
   }
 
   const ownedAtNextRadix = owned[nextRadix];
+  let offset;
   if (ownedAtNextRadix) {
-    const offset = Math.min(nextValue, ownedAtNextRadix);
-    output.usedFromStore = offset;
+    offset = Math.min(nextValue, ownedAtNextRadix);
     nextValue -= offset;
   }
 
-  return [output, ...mergeReduce(nextValue, nextRadix, toRadix, owned)];
+  const result = [output, ...mergeReduce(nextValue, nextRadix, toRadix, owned)];
+
+  if (result.length > 1 && offset) {
+    result[1].usedFromStore = offset;
+  }
+
+  return result;
 }
 
 export default mergeReduce;

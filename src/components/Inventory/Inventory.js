@@ -41,7 +41,7 @@ const Inventory = ({
       <table>
         <thead>
           <tr>
-            <th>Current Inventory</th>
+            <th className="header">Current Inventory</th>
           </tr>
         </thead>
         <tbody>{items}</tbody>
