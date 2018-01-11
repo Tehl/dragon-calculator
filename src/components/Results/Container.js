@@ -12,7 +12,7 @@ const mapStateToProps = state => {
       state.options.targetValue,
       state.options.toLevel,
       state.options.fromLevel,
-      {}
+      state.inventory
     );
   }
 

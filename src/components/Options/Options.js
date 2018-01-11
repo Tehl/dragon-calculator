@@ -44,7 +44,11 @@ const Options = ({
         {getAvailableLevels(0)}
       </select>
       <span>to produce</span>
-      <input type="text" value={targetValue} onChange={onTargetValueChangedInternal} />
+      <input
+        type="text"
+        value={targetValue}
+        onChange={onTargetValueChangedInternal}
+      />
       <span>x</span>
       <select value={toLevel} onChange={onToLevelChangedInternal}>
         {getAvailableLevels(fromLevel + 1)}

@@ -1,20 +1,34 @@
 import React from "react";
 
+import "./Results.less";
+
 const Results = ({ steps }) => (
-  <table>
-    <tbody>
-      {steps.map((step, idx) => (
-        <tr key={idx}>
-          <td>
-            {step.previousValue} x level {step.previousRadix}
-          </td>
-          <td>
-            {step.nextValue} x level {step.nextRadix}
-          </td>
+  <div class="merge-results">
+    <table>
+      <thead>
+        <tr>
+          <th>Merge Chain</th>
+          <th />
         </tr>
-      ))}
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        {steps.map((step, idx) => (
+          <tr key={idx}>
+            <td>
+              <span>
+                {step.previousValue} x level {step.previousRadix}
+              </span>
+            </td>
+            <td>
+              <span>
+                {step.nextValue} x level {step.nextRadix}
+              </span>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
 );
 
 export default Results;
