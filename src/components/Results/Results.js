@@ -24,12 +24,12 @@ const NextValue = ({ step }) => (
   </span>
 );
 
-const Results = ({ steps }) => (
+const Results = ({ steps, title }) => (
   <div className="merge-results">
     <table>
       <thead>
         <tr>
-          <th className="header">Merge Chain</th>
+          <th className="header">{title}</th>
           <th />
         </tr>
       </thead>

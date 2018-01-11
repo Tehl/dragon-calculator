@@ -1,4 +1,4 @@
-function mergeReduce(value, fromRadix, toRadix, owned) {
+function mergeReduce(value, fromRadix, toRadix, owned, efficient) {
   if (fromRadix < toRadix) {
     throw new Error("fromRadix must be greater than toRadix");
   }
@@ -8,12 +8,18 @@ function mergeReduce(value, fromRadix, toRadix, owned) {
     return [];
   }
 
-  const valueFives = Math.floor(value / 2);
-  const valueThrees = value - valueFives * 2;
+  let targetValue = value;
+  if (efficient && targetValue % 2 === 1) {
+    targetValue += 1;
+  }
+
+  const valueFives = Math.floor(targetValue / 2);
+  const valueThrees = targetValue - valueFives * 2;
+
   let nextValue = valueFives * 5 + valueThrees * 3;
 
   let output = {
-    previousValue: value,
+    previousValue: targetValue,
     previousRadix: fromRadix,
     nextValue: nextValue,
     nextRadix: nextRadix
@@ -30,7 +36,10 @@ function mergeReduce(value, fromRadix, toRadix, owned) {
     nextValue -= offset;
   }
 
-  const result = [output, ...mergeReduce(nextValue, nextRadix, toRadix, owned)];
+  const result = [
+    output,
+    ...mergeReduce(nextValue, nextRadix, toRadix, owned, efficient)
+  ];
 
   if (result.length > 1 && offset) {
     result[1].usedFromStore = offset;

@@ -12,11 +12,14 @@ const App = () => (
         </div>
       </div>
       <div className="row gutters">
-        <div className="col col-6">
+        <div className="col col-4">
           <Inventory />
         </div>
-        <div className="col col-6">
-          <Results />
+        <div className="col col-4">
+          <Results title="Direct Merge" efficient={false} />
+        </div>
+        <div className="col col-4">
+          <Results title="Efficient Merge" efficient={true} />
         </div>
       </div>
     </div>

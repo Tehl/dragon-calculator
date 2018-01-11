@@ -1,19 +1,17 @@
 import { connect } from "react-redux";
-import mergeReduce from "../../logic/mergeReduce";
+import {
+  getDirectMergeChain,
+  getEfficientMergeChain
+} from "../../logic/mergeChains";
 import Results from "./Results";
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   let steps;
 
-  if (!state.options.targetValue) {
-    steps = [];
+  if (ownProps.efficient) {
+    steps = getEfficientMergeChain(state);
   } else {
-    steps = mergeReduce(
-      state.options.targetValue,
-      state.options.toLevel,
-      state.options.fromLevel,
-      state.inventory
-    );
+    steps = getDirectMergeChain(state);
   }
 
   return {
