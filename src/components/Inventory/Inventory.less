@@ -12,9 +12,31 @@
   }
 
   .header {
+    padding-left: 3px;
+
     &:before {
       .icon("\f0b1");
       font-weight: normal;
     }
+  }
+
+  .clear-inventory {
+    padding: 0 3px;
+    display: inline-block;
+    color: #a4a4a4;
+    text-decoration: none;
+
+    &:hover {
+      color: #848484;
+    }
+
+    &:before {
+      .icon("\f00d");
+      font-weight: normal;
+    }
+  }
+
+  tfoot td {
+    border-bottom: 0;
   }
 }

@@ -1,4 +1,4 @@
-import { INVENTORY_UPDATED } from "../reducers/inventory";
+import { INVENTORY_UPDATED, INVENTORY_CLEARED } from "../reducers/inventory";
 
 function setInventoryCount(level, count) {
   return {
@@ -10,4 +10,11 @@ function setInventoryCount(level, count) {
   };
 }
 
-export { setInventoryCount };
+function clearInventory() {
+  return {
+    type: INVENTORY_CLEARED,
+    payload: {}
+  };
+}
+
+export { setInventoryCount, clearInventory };

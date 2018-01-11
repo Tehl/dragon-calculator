@@ -15,13 +15,18 @@ const Inventory = ({
   fromLevel,
   toLevel,
   currentInventory,
-  onInventoryUpdated
+  onInventoryUpdated,
+  onInventoryCleared
 }) => {
   const onInventoryValueChanged = level => event => {
     const value = Number(event.target.value);
     if (!isNaN(value)) {
       onInventoryUpdated(level, value);
     }
+  };
+  const onClearInventoryClicked = event => {
+    event.preventDefault();
+    onInventoryCleared();
   };
 
   const items = [];
@@ -45,6 +50,19 @@ const Inventory = ({
           </tr>
         </thead>
         <tbody>{items}</tbody>
+        <tfoot>
+          <tr>
+            <td>
+              <a
+                href="#"
+                onClick={onClearInventoryClicked}
+                className="clear-inventory"
+              >
+                Clear Inventory
+              </a>
+            </td>
+          </tr>
+        </tfoot>
       </table>
     </div>
   );

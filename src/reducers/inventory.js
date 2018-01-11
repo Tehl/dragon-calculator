@@ -1,4 +1,5 @@
 const INVENTORY_UPDATED = "INVENTORY_UPDATED";
+const INVENTORY_CLEARED = "INVENTORY_CLEARED";
 
 const defaultState = {};
 
@@ -10,6 +11,9 @@ const inventory = (state = defaultState, action) => {
         [action.payload.level]: action.payload.count
       };
 
+    case INVENTORY_CLEARED:
+      return defaultState;
+
     default:
       return state;
   }
@@ -17,4 +21,4 @@ const inventory = (state = defaultState, action) => {
 
 export default inventory;
 
-export { INVENTORY_UPDATED };
+export { INVENTORY_UPDATED, INVENTORY_CLEARED };

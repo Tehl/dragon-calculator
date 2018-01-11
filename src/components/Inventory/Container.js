@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Inventory from "./Inventory";
-import { setInventoryCount } from "../../actions/inventory";
+import { setInventoryCount, clearInventory } from "../../actions/inventory";
 
 const mapStateToProps = state => {
   return {
@@ -13,7 +13,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onInventoryUpdated: (level, count) =>
-      dispatch(setInventoryCount(level, count))
+      dispatch(setInventoryCount(level, count)),
+    onInventoryCleared: () => dispatch(clearInventory())
   };
 };
 
