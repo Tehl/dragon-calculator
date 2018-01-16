@@ -19,6 +19,10 @@ const inventory = (state = defaultState, action) => {
   }
 };
 
+const getInventory = state => state.inventory;
+
 export default inventory;
 
 export { INVENTORY_UPDATED, INVENTORY_CLEARED };
+
+export { getInventory };

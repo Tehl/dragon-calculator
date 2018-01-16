@@ -2,8 +2,8 @@ import { connect } from "react-redux";
 import {
   getDirectMergeChain,
   getEfficientMergeChain
-} from "../../logic/mergeChains";
-import Results from "./Results";
+} from "../../logic/chains";
+import MergeChain from "./MergeChain";
 
 const mapStateToProps = (state, ownProps) => {
   let steps;
@@ -19,6 +19,6 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const ResultsContainer = connect(mapStateToProps)(Results);
+const MergeChainContainer = connect(mapStateToProps)(MergeChain);
 
-export default ResultsContainer;
+export default MergeChainContainer;

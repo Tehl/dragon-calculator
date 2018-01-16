@@ -1,10 +1,7 @@
 import { createSelector } from "reselect";
 import mergeReduce from "./mergeReduce";
-
-const getTargetValue = state => state.options.targetValue;
-const getFromLevel = state => state.options.fromLevel;
-const getToLevel = state => state.options.toLevel;
-const getInventory = state => state.inventory;
+import { getFromLevel, getToLevel, getTargetValue } from "../reducers/options";
+import { getInventory } from "../reducers/inventory";
 
 const getMergeChain = efficient => (
   targetValue,

@@ -34,6 +34,12 @@ const options = (state = defaultState, action) => {
   }
 };
 
+const getTargetValue = state => state.options.targetValue;
+const getFromLevel = state => state.options.fromLevel;
+const getToLevel = state => state.options.toLevel;
+
 export default options;
 
 export { FROM_LEVEL_CHANGED, TO_LEVEL_CHANGED, TARGET_VALUE_CHANGED };
+
+export { getTargetValue, getFromLevel, getToLevel };

@@ -1,7 +1,8 @@
 import React from "react";
 import Options from "./Options/Container";
 import Inventory from "./Inventory/Container";
-import Results from "./Results/Container";
+import MergeChain from "./MergeChain/Container";
+import MergeSurplus from "./MergeSurplus/Container";
 
 const App = () => (
   <div className="row">
@@ -12,14 +13,17 @@ const App = () => (
         </div>
       </div>
       <div className="row gutters">
-        <div className="col col-4">
+        <div className="col col-3">
           <Inventory />
         </div>
         <div className="col col-4">
-          <Results title="Direct Merge" efficient={false} />
+          <MergeChain title="Direct Merge" efficient={false} />
         </div>
         <div className="col col-4">
-          <Results title="Efficient Merge" efficient={true} />
+          <MergeChain title="Efficient Merge" efficient={true} />
+        </div>
+        <div className="col col-1">
+          <MergeSurplus />
         </div>
       </div>
     </div>

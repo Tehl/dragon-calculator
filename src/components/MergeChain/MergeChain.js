@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./Results.less";
+import "./MergeChain.less";
 
 const PreviousValue = ({ step }) => {
   let className;
@@ -24,8 +24,8 @@ const NextValue = ({ step }) => (
   </span>
 );
 
-const Results = ({ steps, title }) => (
-  <div className="merge-results">
+const MergeChain = ({ steps, title }) => (
+  <div className="merge-chain">
     <table>
       <thead>
         <tr>
@@ -49,4 +49,4 @@ const Results = ({ steps, title }) => (
   </div>
 );
 
-export default Results;
+export default MergeChain;
