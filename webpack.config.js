@@ -2,6 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 const production = process.env.NODE_ENV === "production";
 
 let plugins = [
@@ -16,19 +17,23 @@ let plugins = [
 if (production) {
   plugins = [
     ...plugins,
-    new UglifyJSPlugin({
-      sourceMap: true
-    }),
+    new CleanWebpackPlugin(['dist']),
+    new webpack.HashedModuleIdsPlugin(),
     new webpack.DefinePlugin({
       "process.env.NODE_ENV": JSON.stringify("production")
+    }),
+    new UglifyJSPlugin({
+      sourceMap: true
     })
   ];
+} else {
+  plugins = [...plugins, new webpack.NamedModulesPlugin()];
 }
 
 module.exports = {
   entry: "./src/index.js",
   output: {
-    filename: "bundle.js",
+    filename: production ? "bundle.[chunkhash].js" : "bundle.js",
     path: path.resolve(__dirname, "dist")
   },
   devServer: {
@@ -65,7 +70,7 @@ module.exports = {
             options: {
               name: "[name].[ext]",
               outputPath: "fonts/",
-              publicPath: "../"
+              publicPath: "./"
             }
           }
         ]
