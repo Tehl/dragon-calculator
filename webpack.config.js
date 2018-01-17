@@ -1,6 +1,29 @@
 const path = require("path");
 const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 const production = process.env.NODE_ENV === "production";
+
+let plugins = [
+  new webpack.DefinePlugin({
+    DEBUG: !production
+  }),
+  new HtmlWebpackPlugin({
+    template: "src/index.html"
+  })
+];
+
+if (production) {
+  plugins = [
+    ...plugins,
+    new UglifyJSPlugin({
+      sourceMap: true
+    }),
+    new webpack.DefinePlugin({
+      "process.env.NODE_ENV": JSON.stringify("production")
+    })
+  ];
+}
 
 module.exports = {
   entry: "./src/index.js",
@@ -49,9 +72,5 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      DEBUG: !production
-    })
-  ]
+  plugins: plugins
 };
