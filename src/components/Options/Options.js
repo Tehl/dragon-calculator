@@ -2,7 +2,7 @@ import React from "react";
 
 import "./Options.less";
 
-const maxLevel = 10;
+const maxLevel = 18;
 
 function getAvailableLevels(minimumLevel) {
   const levels = [];
