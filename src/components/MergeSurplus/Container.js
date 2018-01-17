@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { getEfficientMergeSurplus } from "../../logic/surplus";
+import { setAllInventory } from "../../actions/inventory";
 import MergeSurplus from "./MergeSurplus";
 
 const mapStateToProps = state => {
@@ -8,6 +9,14 @@ const mapStateToProps = state => {
   };
 };
 
-const MergeSurplusContainer = connect(mapStateToProps)(MergeSurplus);
+const mapDispatchToProps = dispatch => {
+  return {
+    updateInventory: inventory => dispatch(setAllInventory(inventory))
+  };
+};
+
+const MergeSurplusContainer = connect(mapStateToProps, mapDispatchToProps)(
+  MergeSurplus
+);
 
 export default MergeSurplusContainer;

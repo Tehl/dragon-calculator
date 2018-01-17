@@ -1,12 +1,18 @@
 import { INVENTORY_UPDATED, INVENTORY_CLEARED } from "../reducers/inventory";
 
-function setInventoryCount(level, count) {
+function setInventoryCountByLevel(level, count) {
   return {
     type: INVENTORY_UPDATED,
     payload: {
-      level,
-      count
+      [level]: count
     }
+  };
+}
+
+function setAllInventory(inventory) {
+  return {
+    type: INVENTORY_UPDATED,
+    payload: inventory
   };
 }
 
@@ -17,4 +23,4 @@ function clearInventory() {
   };
 }
 
-export { setInventoryCount, clearInventory };
+export { setInventoryCountByLevel, setAllInventory, clearInventory };

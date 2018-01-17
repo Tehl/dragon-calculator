@@ -8,7 +8,7 @@ const inventory = (state = defaultState, action) => {
     case INVENTORY_UPDATED:
       return {
         ...state,
-        [action.payload.level]: action.payload.count
+        ...action.payload
       };
 
     case INVENTORY_CLEARED:
